@@ -1,0 +1,239 @@
+UPSTREAM bugs?
+- renderer for padding causes infinite recursion error in vue, possible related to conditional rendering
+
+BUGS:
+- Name change not working for boat names correctly, why?!?
+- TWA predictor discrepancies, try adding 10sec heuristics, sync with server
+
+JS check:
+- Object.assign use on arrays, use concat to empty array instead?
+- Passing events incorrectly from popups to map (to visual steering mainly)?
+
+Check:
+- Finish line end point fixes?
+- Verify that there are no useless tile redraws (print redraw count to tile).
+
+
+Other bits
+- Images to tools/tabs
+- Rework poi fate-sharing (large translate + mix-blend-mode bugs in Chrome)
+
+- Ruler GC mode
+- POI popup captures events
+- Loxo calc wrapping (use boatPosition with shortest loxo path)
+- Map graticules / grid
+	- FIX tiles edge drawn when the canvas is cropped from the tile graticule
+- TWS contours
+- Clear local store button to misc
+
+- Boatlists save to localStore & handle non-racing names cleanly
+- Chatroom config to localStore
+- Local trace correction (for recent turns)
+- Limit min (from viewsize or race area? Flash uses race area) zoom
+- continuous click on + & - buttons zooms
+- Tweak MAX_LATITUDE of Leaflet's SphericalMercator projection (extend it)
+- Prune chat messages if needed
+- Blinking "!" triangle to chat & race messages when new messages
+- Fix splitpanes resized caused windmap movement
+
+- DC list time delta column
+- Highlight DCs with same time with red
+- Highlight DCs with out-of-range COG/TWAs
+
+- Predictor performance loss impact
+- Predictor 10s at beginning
+
+- Improve terminator & x3 it for twilights, #bbb only darkens colors a little
+- Lights mode, show-only & buddy boats always w/o lights
+- Auto-select on leaderboard lists
+- Scroll position saving
+
+- Select boats from map click in default ui mode, generalize hover find boats code
+- Add generic poi/mark/boat targeter
+- Localstore, clear previous race message shown ids, before that validate races.xml?filter=active to have at least the current race id
+
+- Error messages to tooltips (or by side) for incorrect steering inputs
+- Add expected courses list on clearing DCs & when doing steering
+	- If current course not on list, trigger reloading all DCs
+
+- Reregister in fleet races
+- Upgrade sol/guest -> own credentials
+- New boatlist based on active, not the main/all list
+- Larger draw outside renderer value, maybe make it configurable if perf impact
+- Improve error reporting when invalid data arrives, the rest
+- Network debug into diag
+- boatlist lastclicked to store to avoid forgetting it?
+- SOL API Time sync support
+- Pruning loaded tiles to free memory, add zero refCounted lists, do this only if needed.
+- Predictors, consider performance improvements (smaller parts, bboxes, multi canvases)
+- Put not moved into fleet and use as TWA=0 heuristic
+- Race component fetch backup timer (if boat API dies)
+- API calls, general robustness checks everywhere before accepting data
+	- Normalize cog/twa angles safely (brainaid etc may input us garbage)
+	- Boatname valid characters, enforce too
+	- Try e-17 format with all instruments
+- Robust wx time parser (support also != 4 entries + validate time)
+	- These should be provided in xml by the server though
+- VMC towards finish line on the last leg rather than the middle point
+- Scale: use own calc based on lat, not map.distance to use correct EARTH_R
+- API call prepare code safety (make sure bugs don't stall API retry loop)
+- TWA given with "Port" / "P" / "Starboard" / "S" suffix
+- TWA ~ 0 causes the TWA predictor to look large blob at the boat or other issues with markers not on predictor line (at least with +0.01)
+- Notes?
+
+DC list other
+	- Better time sync support, figure out optimal delay fixup delta
+		- How to counter latency spikes
+		- Or better DC setting API, please!
+	- Allow exec immediately (+clear DCs before it too?)
+	- Editor
+		- Support add new (without deleting the old one)
+		- Validate unique time
+	- Multiselect, generalize boatlist multiselect into mixin
+	- Show the time until DC fires somewhere for every DC?
+
+Refactors
+	- kntToMs / msToKnt improvement, conv.js + constants for all conversions
+	- consider transforming API data @ fetch time to avoid most of knt/ms conversions
+	- Map events using vue2leaflet style, any to do? 2 in map.vue?
+	- Predictor -> store refactor, could help performance if predictor goes to normal layer
+	- veevalidate consider, looked too complicated but might be good
+	- generic timedelta -> string converter (as component?)
+	- config label component for ("experimental" or such easy add ones)
+	- check all L.latLng to avoid GCs if possible
+	- freq used functions, check if returning objects necessary (e.g., twd/tws calcs?)
+	- tile fetch concurrency to use await
+	- solapi get/post to use await
+	- Tiles try remove waitList clearing
+	- Check if splitting in wx code needs also some idle calls, could take long?
+	- LControl click propagation with newer Vue2Leaflet
+	- Refactor multiselect from boatlists
+	- Try projecting tiles beforehand, are the px values accurate?
+
+Visual low-prio stuff
+- Boatlists by dtf distance, boat class
+- Boatlists, select still highlights boats filtered away
+- Try using tooltip for poi markers to make click functionality better
+- PR mark tooltip css to use zoom dependent padding?
+- Towback start, refetch the fleet right away to avoid boats lingering on the sea
+- After finishing, fetch fleet until own distance there becomes zero (for quicker results)
+	- Sadly, no finish_time for boats in race API
+- Splitter css
+- Start time change notification: calculate delta part
+- allMessagesShown getter to racemessages.js (for tab highlight & alert)
+- Delay fleet fetch by some seconds
+- Map tile zooming using css transformations
+- Chatroom visual separation
+- other boats contrast correction
+- 9999 ranking order?
+- Perhaps use mark nearness to refetch race more often?
+- Perhaps username component to offload charset tricks (if needed)?
+- Leaderboard tooltips (LOG, DBL, others?)
+- Leaderboard relative DTF mode
+- Fade old WPs & route
+- Investigate: are own boat's zoom issues due to updated position during zooming?
+- Two laps think how to make "Rounded" vs "Leave to ...", perhaps delta to current ordered z-indexing?
+- DC editor label click focus response for "Type" & "Date" labels
+- DC editor, past time handling / rejecting
+- Wind map, how to do calcs also during zooming, I read it's complicated but would look cool
+- Sail angle improvements
+- inline-block to wx panel, consider bolding the important fields
+- Consider drawing speedups:
+	- Use rbush for faster drawing when many small island polys in a tile?
+	- Avoid drawing complexity outside the screen (skip all points when in
+	  the same side of a border)
+- Predictor: Active steering order over the other
+- Graticules lat/lon numbers
+- Prevent selection of constant texts/labels
+- Wind key overlaps with polar labels when window is narrow
+- Draw leader on top to canvas (trace z-index too for own+leader?)
+- Sort tile fetch list based on closeness to the center (needs map center tile information), add refCount === 0 into front to kill them as soon as possible
+- race message datetime layouting, current title rows have an impact
+- TableHeader horizontal sizing if size > width, does it work?
+- When anti-meridian is visible, instead of tile reuse, create shadow copies to -360/+360 to avoid tile flicker on pan over 180
+- Brainaid style DC list
+- Only remove points from trace with dst > last trace point (how to handle tight turns then?)
+- Vanishing fleet? At least with leaflet 1.4.0 (now using 1.3.4), canvases were correctly drawn!
+- Zoom animation, some CSS3 transformation examples in some canvas plugins
+- Perhaps use flyToBounds also for zooming if it gives more cb calls during zooming?
+- Hover: Command boat clone into searchTree (del+add cycle needs to be done)?
+- Make steering button width constant
+- Chat sizing to use flex / or dragable sizes?
+- Textbox border everywhere (try global styling)
+- 2d24.0h in wx panel (due to rounding < 3d?)
+- wx slider tics/labels
+- wx slider, start time tic
+- Fix initial race area center sets >180 lngs?
+- Placenames map?
+- Steering delay focus save
+- Timed race duplicate names filter
+- BBQ/TWA0 detection improvements (but only for non-buddies)
+- Chat high priority fetching support (for newly opened languages, active chats, recently sent chats)
+- Configrange, show current value, extreme numbers/"low"/"high"
+- Visualsteer out of latitude bounds truncates latitude (in project?)
+- Fix predictor staleness (one tick horizontal line after pan)
+- Polar url in links?
+- Ruler extra wrap copies for >+/-180 dst point
+- "Reset" should consider not yet visible turns too (maybe block button until the next boat tick?)
+- "dark" eye strain mode, dark blue bg & darker lands & screen mix-blend-mode
+- Ruler:
+	- Bearing to other boat? Can be done by locking ruler points to boats
+	- show opposite heading, total length
+	- Improve label display position, myabe use CSS to rotate the label?
+
+Configs
+	- Route fading: old, old & far ahead, off (FI-SE archipelago helper)
+	- Steering digits: (2-4)
+	- Max distinct boats show on hover: range
+	- Background: terminator(s), white sea, dark blue sea, day/night local
+	- DTF: default, synthetized
+	- Route bisection lines bool (draw as dashed)?
+	- Instrument change dir/rate-of-change bools
+	- Highlight leader bool
+	- WX sound bool
+	- WX contours density: range
+	- Pop-up race messages: pop-up, tab auto-select, tab alert (blinking !)
+	- Direct steering retry timer (send)
+	- DC editor retry timer
+	- Fleet/traces fetch freq reduction for lower BW use
+	- visual steering & steering tab fields in-sync (flash compatibility mode)?
+	- PR mark labels bool
+	- Steering button feedback mode
+
+
+Warnings (to lower right corner?):
+	- DCs with the same timestamp
+	- DCs with an invalid value
+	- No start commands set
+	- Warn from DCs after start but no starting command
+	- Warning when unwinding a mark rounding, maybe show the bisecting line too then? Perhaps use maxVMG triangle to filter out most spurious warnings & sailing away from the mark?
+	- Warn from invalid WX
+
+Discussion needed:
+- Custom target WPs for VMC & WPBRG calculations
+- WPBRG with red/green/grey dot/arrow/pointer to polar
+- Setting DCs, time calc: from the last boat tick or SOL realtime?
+- Configs:
+	- Predictor: extras (maxvmc, maxvmg, maxbs)?
+	- Steering tool max VMG limiter bool
+	- Dead-reckoning: off, own, nearby, all (or split to two?)
+	- High-zoom (edge lenght > x) show coast angles
+- Advanced config filtering out some of the config options (also think "SOTP" filter same time)
+- Wind level line
+- Dual steering UI, one for manual, other for DC?
+- PR mark cut detector?
+- Predictor
+	- Next DC visualization
+	- Aiming from predictor?
+	- Planning only predictor?
+- Good projection for polar region?
+- Transparent polar to anywhere on the map (local wx info based)?
+
+UPSTREAM bugs, all worked around currently:
+- UTC fix
+- LGridLayer fix
+- gridlayer zoom Math.ceil feature
+- gridlayer prune bug
+
+Seems unfixable:
+- Track down the reason for the update memory limit warnings 

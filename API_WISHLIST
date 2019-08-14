@@ -1,0 +1,9 @@
+- Finish line end point coordinates
+- WX update times to XML rather than description
+- Chat messages, unique msg IDs & user ids
+- Better DC time API for setting DCs times independent of network latency/timer
+  offsets, the time parameter should be in absolute time (=UTC seconds)
+- Last DC editing timestamp to boat call
+- Add finish_time into race (fleet) API
+- More accurate time call to enable better synchronization
+- Register call
