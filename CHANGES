@@ -118,6 +118,15 @@ Other
   POI. This change is due to general difficulty in changing clipboard in web
   browser environments due to security measures.
 
+- "POIs" (Alt+Click) at arbitary points will indicate VMG towards that
+  point.
+
+- When on the last leg of a race, the VMC instrument measures towards
+  the middle point of the finish line rather than the best point of it.
+  (It is unclear how the flash client handled this but if you depend on
+  VMC instrument when approaching finish line, please note the possible
+  difference).
+
 Visual Impact Only
 ------------------
 
