@@ -22,11 +22,11 @@ Steering
   instead to steer using TWA instead, please remember to activate TWA
   from the steering tab before sending the steering command.
 
-- TWA and COG values in the steering panel are interlinked. The client
-  updates the non-active steering automatically as the wind direction
-  changes. The precision for copying is auto-selected by the client
-  to 2 and 3 decimal places depending on the number of input decimals
-  places in the active steering field.
+- TWA and COG values in the steering panel remain in sync with with each
+  other the whole time. The client updates the non-active steering
+  automatically as the wind direction changes. The precision for copying
+  is auto-selected by the client to 2 and 3 decimal places depending on
+  the number of input decimals places in the active steering field.
 
 - Currently set steering may be "Reset" into steering tab using a new
   button in the steering tab. However, a very recently made turn may be
