@@ -1,5 +1,5 @@
-This document lists the known changes compared with the flash client. This
-list does include only significant changes and additions, not all the
+This document lists the known changes compared with the current flash client.
+This list includes only significant changes and additions, not all the
 functionality that may still be missing from the HTML client. If you find
 an important omission of such a change, you may report it to the author.
 
@@ -10,9 +10,9 @@ Steering
   course without any prefix. Setting TWA=0 without prefix is still
   accepted.
 
-- The COG/TWA fields in the steering tab are not kept in-sync during
-  the steer tool (visual steering) aiming and only update after a click
-  on the map is made. This is to retain the old values until user input
+- The COG/TWA fields in the steering tab do not change during the steer
+  tool (visual steering) aiming but only update after a click on the race
+  screen is made. This is to retain the old values until user input
   overwrites them. The COG/TWA for aiming are available in the info box
   at the aim target with additional details. Also the values below the
   polar update during aiming.
@@ -22,11 +22,11 @@ Steering
   instead to steer using TWA instead, please remember to activate TWA
   from the steering tab before sending the steering command.
 
-- TWA and COG values in the steering panel are interlocked. The client
+- TWA and COG values in the steering panel are interlinked. The client
   updates the non-active steering automatically as the wind direction
   changes. The precision for copying is auto-selected by the client
-  to 2 and 3 decimal places depending on the number of inputted decimals
-  in the active steering field.
+  to 2 and 3 decimal places depending on the number of input decimals
+  places in the active steering field.
 
 - Currently set steering may be "Reset" into steering tab using a new
   button in the steering tab. However, a very recently made turn may be
@@ -39,10 +39,11 @@ Steering
   and visual steering with polar. In practice, a double click on
   the button will still produce the desired result if starting from
   the off mode as two steps in that cycle will occur. In addition,
-  the Settings have an option to toggle for always showing the polar
-  butterfly when using the visual steering.
+  Settings (available under the Misc tab) has an option to toggle
+  for always showing the polar butterfly when using the visual
+  steering.
 
-- The steer tool can be cancelled using Escape key.
+- The steer tool can be cancelled using the Escape key.
 
 - As long as DCs are not set outside of the client, no DC "refresh" is
   necessary. Using a mobile client, brainaid DC editor, AGL, or other
@@ -50,7 +51,7 @@ Steering
   up-to-date DC list.
 
 - There may be differences in how the new client handles the boat positional
-  updates compared with the old client. It may result in unexcepted
+  updates compared with the old client. It may result in unexpected
   surprises during fast-paced maneuvering if the used strategy depends on
   the boat update timing (e.g., the "count to ten" approach). No such
   differences are known at this point but it is better to be aware of the
@@ -60,14 +61,17 @@ Steering
 Ruler Tool
 ----------
 
+To use the Ruler Tool you need to enable it with one click (the button
+turns red).
+
 - The paths made with the ruler tool remain on screen even when the ruler
   tool is disabled. The ruler tool allows more than one path with a number
   of segments. To create a second path, double click to terminate the
-  current path and re-enable the ruler tool. Also Escape key exits the
-  ruler tool. Backspace key can be used to remove ruler segments in the
-  reverse order.
+  current path and re-enable the ruler tool. The Escape key exits the
+  ruler tool. The Backspace key can be used to remove ruler segments in
+  reverse order as you revise your path.
 
-- GC mode for ruler is still unimplemented (however, orthodromic headings
+- GC mode for ruler is still not implemented (however, orthodromic headings
   starting from the current position of the command boat are available in
   the top-right information box).
 
@@ -76,9 +80,9 @@ Fleet, Leaderboard, and Hover
 
 - Leaderboard selection and hover allow more than one boat to be displayed
   at each time (this is now possible with all boat lists including the "Main
-  Fleet"). Use the Control key to select the boats one-by-one. Hold the Alt
-  key is held while selecting a boat to hold the map view in the current
-  position rather than panning to the position of the selected boat.
+  Fleet"). Use the Control key to select the boats one-by-one. Hold down the
+  Alt key while selecting a boat to hold the map view in the current position
+  if you wish you prevent panning to the position of the selected boat.
   The Shift key may be used to select a range of boats.
 
 - A boat with TWA=0 shows a flat sail. For fleet boats, the TWA=0 heuristics
@@ -91,26 +95,27 @@ Weather
 - Weather panel, a play button (replaces the hidden click functionality).
 
 - Weather step (for backward and forward buttons) can be changed
-  independent of the selected time window for displaying weather data.
+  independently of the selected time window for displaying weather data.
 
 Other
 -----
 
-- Instrument visibility is controlled through the Settings.
+- Instrument visibility is controlled through the Settings (under the
+  Misc tab).
 
 - There is an attempt to scale the practice mark size to match the size
   in the flash client, however, the size and also max zoom may still be
   slightly off which is relevant for the boats willing to participate in
-  practice races. The Settings allow enabling extra zooming that is
-  incompatible with the practice race mark rounding rules; it is
-  recommended to not have it enabled during practice racing.
+  practice races. The Settings allow extra zooming that is incompatible
+  with the practice race mark rounding rules; it is therefore recommended
+  to not have it enabled during practice racing.
 
 - The ability to copy coordinates directly to the clipboard has been
-  replaced with ability to create "POIs" with Alt+Click (available if
+  replaced with ability to create "POIs" with Alt+Click (available only if
   neither steer nor ruler tool is currently active). Clicking the POI
-  opens a popup where from the coordinates can be selected and copied.
-  Popup contains a "Delete" button that removes the particular POI.
-  This change is due to general difficulty in changing clipboard in web
+  opens a popup from where the coordinates can be selected and copied.
+  The popup itself  contains a "Delete" button that removes that particular
+  POI. This change is due to general difficulty in changing clipboard in web
   browser environments due to security measures.
 
 Visual Impact Only
@@ -118,7 +123,7 @@ Visual Impact Only
 
 - Day/night is visualized using a terminator overlay. Currently, no twilight
   phases are shown. The night overlay color is not very dark and may easily
-  be mixed up with an (unwanted) "non-white" background. This is a compromize
+  be mixed up with an (unwanted) "non-white" background. This is a compromise
   because of technical reasons related to blending (the transparency
   effect). Because of blending, it would be impractical to use mid-grey
   colors as the background color.
@@ -128,7 +133,7 @@ Visual Impact Only
 
 - It is possible to make tiny islands visible more easily on the map. See
   the Settings where the minimum size for tiny islands can be set to
-  "default", "1 pixel", and "2-3 pixels". The "2-3 pixel" option is
+  "default", "1 pixel", and "2-3 pixels". NOTE: the "2-3 pixel" option is
   known to cause a limited number of visual glitches at the map tile
   boundaries (including but no limited to false positives where there
   really is no island but only headland; but such cases are probably
@@ -137,6 +142,6 @@ Visual Impact Only
   "1 pixel" or the "default" options.
 
 - During practice period before towback, the practice marks (M1, M2, etc.)
-  are visually labelled on the map. The additional criteria for the label
+  are now visually labelled on the map. The additional criteria for the label
   to be added, is that the mark is at least 0.1nm away from the starting
   position to avoid overlapping labels at the start.
