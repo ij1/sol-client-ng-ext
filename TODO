@@ -17,14 +17,18 @@ Check:
 Other bits
 - Images to tools/tabs
 - Rework poi fate-sharing (large translate + mix-blend-mode bugs in Chrome)
+- setSelected callers should duplicate the object?
+- empty -> text race status msg causes tools to jump down, try &nbsp;?
+- AQ flag
 
 - Ruler GC mode
-- POI popup captures events
+- POI popup captures events (try as tooltips to have more control?)
 - Loxo calc wrapping (use boatPosition with shortest loxo path)
 - Map graticules / grid
 	- FIX tiles edge drawn when the canvas is cropped from the tile graticule
 - TWS contours
 - Clear local store button to misc
+- WX slider dragging (down + move) functionality
 
 - Boatlists save to localStore & handle non-racing names cleanly
 - Chatroom config to localStore
@@ -66,7 +70,7 @@ Other bits
 - SOL API Time sync support
 - Pruning loaded tiles to free memory, add zero refCounted lists, do this only if needed.
 - Predictors, consider performance improvements (smaller parts, bboxes, multi canvases)
-- Put not moved into fleet and use as TWA=0 heuristic
+- Put not moved into fleet and use as TWA=0 heuristic (towback needs to be taken into account)
 - Race component fetch backup timer (if boat API dies)
 - API calls, general robustness checks everywhere before accepting data
 	- Normalize cog/twa angles safely (brainaid etc may input us garbage)
