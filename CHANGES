@@ -55,8 +55,7 @@ Steering
   surprises during fast-paced maneuvering if the used strategy depends on
   the boat update timing (e.g., the "count to ten" approach). No such
   differences are known at this point but it is better to be aware of the
-  possibility and perhaps try such maneuvers first during practice
-  period.
+  possibility and perhaps try such maneuvers first during pre-race practice.
 
 Ruler Tool
 ----------
@@ -154,7 +153,7 @@ Visual Impact Only
   glitches. If you want to avoid those glitches, please use either
   "1 pixel" or the "default" options.
 
-- During practice period before towback, the practice marks (M1, M2, etc.)
+- During pre-race practice before towback, the practice marks (M1, M2, etc.)
   are now visually labelled on the map. The additional criteria for the label
   to be added, is that the mark is at least 0.1nm away from the starting
   position to avoid overlapping labels at the start.
