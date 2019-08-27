@@ -117,7 +117,7 @@ Other
   POI. This change is due to general difficulty in changing clipboard in web
   browser environments due to security measures.
 
-- "POIs" (Alt+Click) at arbitary points will indicate VMG towards that
+- "POI" (Alt+Click) at an arbitary point will indicate VMG towards that
   point.
 
 - When on the last leg of a race, the VMC instrument measures towards
