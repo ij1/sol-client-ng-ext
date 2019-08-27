@@ -17,9 +17,8 @@ Check:
 Other bits
 - Images to tools/tabs
 - Rework poi fate-sharing (large translate + mix-blend-mode bugs in Chrome)
-- setSelected callers should duplicate the object?
-- empty -> text race status msg causes tools to jump down, try &nbsp;?
-- AQ flag
+- editing boatlist dropping selected boats leaves stale trace
+- selection vs boat policy (trace shows although boat doesn't)
 
 - Ruler GC mode
 - POI popup captures events (try as tooltips to have more control?)
@@ -27,14 +26,10 @@ Other bits
 - Map graticules / grid
 	- FIX tiles edge drawn when the canvas is cropped from the tile graticule
 - TWS contours
-- Clear local store button to misc
-- WX slider dragging (down + move) functionality
-
 - Boatlists save to localStore & handle non-racing names cleanly
 - Chatroom config to localStore
 - Local trace correction (for recent turns)
 - Limit min (from viewsize or race area? Flash uses race area) zoom
-- continuous click on + & - buttons zooms
 - Tweak MAX_LATITUDE of Leaflet's SphericalMercator projection (extend it)
 - Prune chat messages if needed
 - Blinking "!" triangle to chat & race messages when new messages
@@ -51,6 +46,7 @@ Other bits
 - Lights mode, show-only & buddy boats always w/o lights
 - Auto-select on leaderboard lists
 - Scroll position saving
+- Saving sort position for boat lists
 
 - Select boats from map click in default ui mode, generalize hover find boats code
 - Add generic poi/mark/boat targeter
