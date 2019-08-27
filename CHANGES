@@ -19,8 +19,8 @@ Steering
 
 - The steer tool input (mouse click) will auto-select COG steering mode
   into the steering tab to better match the UI aiming line. If you want
-  instead to steer using TWA instead, please remember to activate TWA
-  from the steering tab before sending the steering command.
+  instead to steer using TWA, please remember to activate TWA from the
+  steering tab before sending the steering command.
 
 - TWA and COG values in the steering panel remain in sync with with each
   other the whole time. The client updates the non-active steering
@@ -128,7 +128,7 @@ Other
 
 - The chat supports keeping multiple rooms open simultaneously. Press
   "+" button and select the room. Up to three rooms are allowed. "Close"
-  button can be used to close one of the room.
+  button can be used to close one of the rooms.
 
 Visual Impact Only
 ------------------
