@@ -45,6 +45,10 @@ Steering
 
 - The steer tool can be cancelled using the Escape key.
 
+- Orange planning dot for setting a delayed command only shows up
+  when the checkbox is enabled. This is to avoid UI misleading user
+  that DC would be set by typing only the delay value.
+
 - As long as DCs are not set outside of the client, no DC "refresh" is
   necessary. Using a mobile client, brainaid DC editor, AGL, or other
   external programs to edit DCs may require DC "refresh" to have an
