@@ -15,13 +15,17 @@ Check:
 
 
 Other bits
-- Images to tools/tabs
+- Block DC send button while sending
+- Enter key in DC popup
+- traces for + x boats no longer shown
 - Rework poi fate-sharing (large translate + mix-blend-mode bugs in Chrome)
 - editing boatlist dropping selected boats leaves stale trace
 - selection vs boat policy (trace shows although boat doesn't)
+- click while hovering map should select
 
 - Ruler GC mode
 - POI popup captures events (try as tooltips to have more control?)
+- Images to tools/tabs
 - Loxo calc wrapping (use boatPosition with shortest loxo path)
 - Map graticules / grid
 	- FIX tiles edge drawn when the canvas is cropped from the tile graticule
@@ -111,6 +115,7 @@ Refactors
 	- Try projecting tiles beforehand, are the px values accurate?
 
 Visual low-prio stuff
+- Trace length limiter (for return courses)
 - Boatlists by dtf distance, boat class
 - Boatlists, select still highlights boats filtered away
 - Try using tooltip for poi markers to make click functionality better
