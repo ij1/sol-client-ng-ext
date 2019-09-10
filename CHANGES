@@ -100,6 +100,22 @@ Weather
 - Weather step (for backward and forward buttons) can be changed
   independently of the selected time window for displaying weather data.
 
+Points of Interest (POIs)
+-------------------------
+
+- The ability to copy coordinates directly to the clipboard has been
+  replaced with ability to create POIs with Alt+Click (available only if
+  neither steer nor ruler tool is currently active). Clicking the POI
+  opens a popup from where the coordinates can be selected and copied.
+  The popup itself  contains a "Delete" button that removes that particular
+  POI. This change is due to general difficulty in changing clipboard in web
+  browser environments due to security measures.
+
+- POI at an arbitary point will indicate VMG towards that point.
+
+- A scaleless polar butterfly (similar to the steer tool) can be enabled
+  at the location of POI.
+
 Other
 -----
 
@@ -112,17 +128,6 @@ Other
   practice races. The Settings allow extra zooming that is incompatible
   with the practice race mark rounding rules; it is therefore recommended
   to not have it enabled during practice racing.
-
-- The ability to copy coordinates directly to the clipboard has been
-  replaced with ability to create "POIs" with Alt+Click (available only if
-  neither steer nor ruler tool is currently active). Clicking the POI
-  opens a popup from where the coordinates can be selected and copied.
-  The popup itself  contains a "Delete" button that removes that particular
-  POI. This change is due to general difficulty in changing clipboard in web
-  browser environments due to security measures.
-
-- "POI" (Alt+Click) at an arbitary point will indicate VMG towards that
-  point.
 
 - When on the last leg of a race, the VMC instrument measures towards
   the middle point of the finish line rather than the best point of it.
