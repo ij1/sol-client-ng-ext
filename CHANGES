@@ -129,12 +129,6 @@ Other
   with the practice race mark rounding rules; it is therefore recommended
   to not have it enabled during practice racing.
 
-- When on the last leg of a race, the VMC instrument measures towards
-  the middle point of the finish line rather than the best point of it.
-  (It is unclear how the flash client handled this but if you depend on
-  VMC instrument when approaching finish line, please note the possible
-  difference).
-
 - The chat supports keeping multiple rooms open simultaneously. Press
   "+" button and select the room. Up to three rooms are allowed. "Close"
   button can be used to close one of the rooms.
