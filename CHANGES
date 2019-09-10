@@ -133,6 +133,8 @@ Other
   "+" button and select the room. Up to three rooms are allowed. "Close"
   button can be used to close one of the rooms.
 
+- Aid lines for cursor default to off and can be enabled through Settings.
+
 Visual Impact Only
 ------------------
 
