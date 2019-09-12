@@ -2,7 +2,6 @@ UPSTREAM bugs?
 - renderer for padding causes infinite recursion error in vue, possible related to conditional rendering
 
 BUGS:
-- Name change not working for boat names correctly, why?!?
 - TWA predictor discrepancies, try adding 10sec heuristics, sync with server
 
 JS check:
@@ -15,21 +14,19 @@ Check:
 
 
 Other bits
-- Block DC send button while sending
-- Enter key in DC popup
-- traces for + x boats no longer shown
-- Rework poi fate-sharing (large translate + mix-blend-mode bugs in Chrome)
-- editing boatlist dropping selected boats leaves stale trace
-- selection vs boat policy (trace shows although boat doesn't)
-- click while hovering map should select
-
+- Dblclick timer ok?
 - Ruler GC mode
+- TWS contours
+- Enter key in DC popup doesn't do send
+- Select boats from map click in default ui mode, generalize hover find boats code
+
+- Predictor dots for the first 15 minutes
+- Current steering in instruments (CSS text-decoration: underline;)
 - POI popup captures events (try as tooltips to have more control?)
 - Images to tools/tabs
 - Loxo calc wrapping (use boatPosition with shortest loxo path)
 - Map graticules / grid
 	- FIX tiles edge drawn when the canvas is cropped from the tile graticule
-- TWS contours
 - Boatlists save to localStore & handle non-racing names cleanly
 - Chatroom config to localStore
 - Local trace correction (for recent turns)
@@ -38,6 +35,7 @@ Other bits
 - Prune chat messages if needed
 - Blinking "!" triangle to chat & race messages when new messages
 - Fix splitpanes resized caused windmap movement
+- up/down keys in chat textarea don't work
 
 - DC list time delta column
 - Highlight DCs with same time with red
@@ -48,19 +46,19 @@ Other bits
 
 - Improve terminator & x3 it for twilights, #bbb only darkens colors a little
 - Lights mode, show-only & buddy boats always w/o lights
-- Auto-select on leaderboard lists
+- Auto-select toggle for leaderboard lists (now easy w the new getter)
 - Scroll position saving
 - Saving sort position for boat lists
 
-- Select boats from map click in default ui mode, generalize hover find boats code
 - Add generic poi/mark/boat targeter
 - Localstore, clear previous race message shown ids, before that validate races.xml?filter=active to have at least the current race id
 
+- 0.5px quirks to fleet & land
 - Error messages to tooltips (or by side) for incorrect steering inputs
 - Add expected courses list on clearing DCs & when doing steering
 	- If current course not on list, trigger reloading all DCs
 
-- Reregister in fleet races
+- Reregister in timed races
 - Upgrade sol/guest -> own credentials
 - New boatlist based on active, not the main/all list
 - Larger draw outside renderer value, maybe make it configurable if perf impact
@@ -84,6 +82,7 @@ Other bits
 - TWA given with "Port" / "P" / "Starboard" / "S" suffix
 - TWA ~ 0 causes the TWA predictor to look large blob at the boat or other issues with markers not on predictor line (at least with +0.01)
 - Notes?
+- 100 nearest boats shown?
 
 DC list other
 	- Better time sync support, figure out optimal delay fixup delta
@@ -113,8 +112,12 @@ Refactors
 	- LControl click propagation with newer Vue2Leaflet
 	- Refactor multiselect from boatlists
 	- Try projecting tiles beforehand, are the px values accurate?
+	- Rework boat color creation, lots of useless object done there
 
 Visual low-prio stuff
+- WX slider dragging show the wxTime in a "tooltip" above the slider
+- Hide vs Show length in POI popup changes number of lines
+- poi close button href removal
 - Trace length limiter (for return courses)
 - Boatlists by dtf distance, boat class
 - Boatlists, select still highlights boats filtered away
@@ -176,7 +179,7 @@ Visual low-prio stuff
 - Chat high priority fetching support (for newly opened languages, active chats, recently sent chats)
 - Configrange, show current value, extreme numbers/"low"/"high"
 - Visualsteer out of latitude bounds truncates latitude (in project?)
-- Fix predictor staleness (one tick horizontal line after pan)
+- Fix predictor or trace staleness (one tick horizontal line after pan)
 - Polar url in links?
 - Ruler extra wrap copies for >+/-180 dst point
 - "Reset" should consider not yet visible turns too (maybe block button until the next boat tick?)
@@ -232,7 +235,6 @@ Discussion needed:
 	- Aiming from predictor?
 	- Planning only predictor?
 - Good projection for polar region?
-- Transparent polar to anywhere on the map (local wx info based)?
 
 UPSTREAM bugs, all worked around currently:
 - UTC fix
