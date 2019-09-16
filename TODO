@@ -3,6 +3,7 @@ UPSTREAM bugs?
 
 BUGS:
 - TWA predictor discrepancies, try adding 10sec heuristics, sync with server
+- Fleet layer & traces out-of-sync after multiple highlight pans
 
 JS check:
 - Object.assign use on arrays, use concat to empty array instead?
@@ -19,6 +20,7 @@ Other bits
 - TWS contours
 - Enter key in DC popup doesn't do send
 - Select boats from map click in default ui mode, generalize hover find boats code
+- Disable ruler when focusing a text field / prevent dual backspace behavior
 
 - Predictor dots for the first 15 minutes
 - Current steering in instruments (CSS text-decoration: underline;)
@@ -37,6 +39,7 @@ Other bits
 - Fix splitpanes resized caused windmap movement
 - up/down keys in chat textarea don't work
 
+- Comma in decimal value input fields, needs parsing side upgrade
 - DC list time delta column
 - Highlight DCs with same time with red
 - Highlight DCs with out-of-range COG/TWAs
@@ -44,6 +47,7 @@ Other bits
 - Predictor performance loss impact
 - Predictor 10s at beginning
 
+- Handling touchstart & related events, not just mousedown
 - Improve terminator & x3 it for twilights, #bbb only darkens colors a little
 - Lights mode, show-only & buddy boats always w/o lights
 - Auto-select toggle for leaderboard lists (now easy w the new getter)
@@ -83,6 +87,8 @@ Other bits
 - TWA ~ 0 causes the TWA predictor to look large blob at the boat or other issues with markers not on predictor line (at least with +0.01)
 - Notes?
 - 100 nearest boats shown?
+- Ability to compare prev & this wx (at least predictors)
+- Improve wx slider fg color transparency
 
 DC list other
 	- Better time sync support, figure out optimal delay fixup delta
@@ -100,6 +106,7 @@ Refactors
 	- consider transforming API data @ fetch time to avoid most of knt/ms conversions
 	- Map events using vue2leaflet style, any to do? 2 in map.vue?
 	- Predictor -> store refactor, could help performance if predictor goes to normal layer
+	- Predictor to normal Leaflet polyline. Is there enough accuracy?
 	- veevalidate consider, looked too complicated but might be good
 	- generic timedelta -> string converter (as component?)
 	- config label component for ("experimental" or such easy add ones)
@@ -182,6 +189,7 @@ Visual low-prio stuff
 - Fix predictor or trace staleness (one tick horizontal line after pan)
 - Polar url in links?
 - Ruler extra wrap copies for >+/-180 dst point
+- Ruler endpoint as small circles
 - "Reset" should consider not yet visible turns too (maybe block button until the next boat tick?)
 - "dark" eye strain mode, dark blue bg & darker lands & screen mix-blend-mode
 - Ruler:
