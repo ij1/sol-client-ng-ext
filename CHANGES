@@ -71,8 +71,12 @@ turns red).
   tool is disabled. The ruler tool allows more than one path with a number
   of segments. To create a second path, double click to terminate the
   current path and re-enable the ruler tool. The Escape key exits the
-  ruler tool. The backspace key can be used to remove ruler segments in
-  reverse order as you revise your path (the cursor must be over the map).
+  ruler tool.
+
+- The backspace key can be used to remove ruler segments in reverse order
+  as you revise your path (the cursor must be over the map).
+
+- New buttons to delete the last or all ruler segments.
 
 - GC mode for ruler is still not implemented (however, orthodromic headings
   starting from the current position of the command boat are available in
