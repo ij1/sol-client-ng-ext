@@ -7,26 +7,26 @@ BUGS:
 
 JS check:
 - Object.assign use on arrays, use concat to empty array instead?
-- Passing events incorrectly from popups to map (to visual steering mainly)?
 
 Check:
 - Finish line end point fixes?
 - Verify that there are no useless tile redraws (print redraw count to tile).
-
+- Chrome dc dot w/o cc/twa values
+- up/down keys in chat textarea don't work with something? In where? Chrome? FF worked when tested.
 
 Other bits
+- 2d24.0h in wx panel (due to rounding < 3d?)
 - Dblclick timer ok?
-- Ruler GC mode
 - TWS contours
 - Enter key in DC popup doesn't do send
 - Select boats from map click in default ui mode, generalize hover find boats code
-- Disable ruler when focusing a text field / prevent dual backspace behavior
+- Refetch token
+- WX offset mode
 
-- Predictor dots for the first 15 minutes
+- click.prevent needed for touch UIs?
+- Handling touchstart & related events for zoom buttons, not just mousedown
 - Current steering in instruments (CSS text-decoration: underline;)
 - POI popup captures events (try as tooltips to have more control?)
-- Images to tools/tabs
-- Loxo calc wrapping (use boatPosition with shortest loxo path)
 - Map graticules / grid
 	- FIX tiles edge drawn when the canvas is cropped from the tile graticule
 - Boatlists save to localStore & handle non-racing names cleanly
@@ -37,7 +37,6 @@ Other bits
 - Prune chat messages if needed
 - Blinking "!" triangle to chat & race messages when new messages
 - Fix splitpanes resized caused windmap movement
-- up/down keys in chat textarea don't work
 
 - Comma in decimal value input fields, needs parsing side upgrade
 - DC list time delta column
@@ -47,10 +46,9 @@ Other bits
 - Predictor performance loss impact
 - Predictor 10s at beginning
 
-- Handling touchstart & related events, not just mousedown
 - Improve terminator & x3 it for twilights, #bbb only darkens colors a little
 - Lights mode, show-only & buddy boats always w/o lights
-- Auto-select toggle for leaderboard lists (now easy w the new getter)
+- Always-select toggle for leaderboard lists (now easy w the new getter)
 - Scroll position saving
 - Saving sort position for boat lists
 
@@ -89,6 +87,8 @@ Other bits
 - 100 nearest boats shown?
 - Ability to compare prev & this wx (at least predictors)
 - Improve wx slider fg color transparency
+- Ruler: show opposite heading
+- Ruler wrap, detect anti-meridian crossing from mouse movements during panning
 
 DC list other
 	- Better time sync support, figure out optimal delay fixup delta
@@ -136,7 +136,7 @@ Visual low-prio stuff
 - Splitter css
 - Start time change notification: calculate delta part
 - allMessagesShown getter to racemessages.js (for tab highlight & alert)
-- Delay fleet fetch by some seconds
+- Delay fleet fetch by some seconds to allow server to move all boats
 - Map tile zooming using css transformations
 - Chatroom visual separation
 - other boats contrast correction
@@ -175,9 +175,7 @@ Visual low-prio stuff
 - Make steering button width constant
 - Chat sizing to use flex / or dragable sizes?
 - Textbox border everywhere (try global styling)
-- 2d24.0h in wx panel (due to rounding < 3d?)
-- wx slider tics/labels
-- wx slider, start time tic
+- wx slider: tics/labels, start time tic
 - Fix initial race area center sets >180 lngs?
 - Placenames map?
 - Steering delay focus save
@@ -185,23 +183,20 @@ Visual low-prio stuff
 - BBQ/TWA0 detection improvements (but only for non-buddies)
 - Chat high priority fetching support (for newly opened languages, active chats, recently sent chats)
 - Configrange, show current value, extreme numbers/"low"/"high"
-- Visualsteer out of latitude bounds truncates latitude (in project?)
 - Fix predictor or trace staleness (one tick horizontal line after pan)
 - Polar url in links?
-- Ruler extra wrap copies for >+/-180 dst point
-- Ruler endpoint as small circles
 - "Reset" should consider not yet visible turns too (maybe block button until the next boat tick?)
 - "dark" eye strain mode, dark blue bg & darker lands & screen mix-blend-mode
+- Wind level line for command boat
 - Ruler:
 	- Bearing to other boat? Can be done by locking ruler points to boats
-	- show opposite heading, total length
 	- Improve label display position, myabe use CSS to rotate the label?
 
 Configs
 	- Route fading: old, old & far ahead, off (FI-SE archipelago helper)
 	- Steering digits: (2-4)
 	- Max distinct boats show on hover: range
-	- Background: terminator(s), white sea, dark blue sea, day/night local
+	- Background: dark blue sea, local day/night
 	- DTF: default, synthetized
 	- Route bisection lines bool (draw as dashed)?
 	- Instrument change dir/rate-of-change bools
@@ -214,7 +209,7 @@ Configs
 	- Fleet/traces fetch freq reduction for lower BW use
 	- visual steering & steering tab fields in-sync (flash compatibility mode)?
 	- PR mark labels bool
-	- Steering button feedback mode
+	- Steering button feedback mode ("slow UI"), something else was also in my mind but cannot remember it now
 
 
 Warnings (to lower right corner?):
@@ -235,7 +230,6 @@ Discussion needed:
 	- Dead-reckoning: off, own, nearby, all (or split to two?)
 	- High-zoom (edge lenght > x) show coast angles
 - Advanced config filtering out some of the config options (also think "SOTP" filter same time)
-- Wind level line
 - Dual steering UI, one for manual, other for DC?
 - PR mark cut detector?
 - Predictor
