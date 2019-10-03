@@ -61,6 +61,9 @@ Steering
   differences are known at this point but it is better to be aware of the
   possibility and perhaps try such maneuvers first during pre-race practice.
 
+- The predictor now includes 1 minute dots for the first 15 minutes when
+  zoomed close enough.
+
 Ruler Tool
 ----------
 
@@ -78,9 +81,9 @@ turns red).
 
 - New buttons to delete the last or all ruler segments.
 
-- GC mode for ruler is still not implemented (however, orthodromic headings
-  starting from the current position of the command boat are available in
-  the top-right information box).
+- Ruler is limited to span of 179 degrees to avoid UI anomalies.
+
+- Total length of a ruler path is always enabled.
 
 Fleet, Leaderboard, and Hover
 -----------------------------
@@ -138,6 +141,8 @@ Other
   button can be used to close one of the rooms.
 
 - Aid lines for cursor default to off and can be enabled through Settings.
+  In addition to horizontal and vertical lines, local wind-based aid lines
+  can be selected.
 
 Visual Impact Only
 ------------------
@@ -147,7 +152,8 @@ Visual Impact Only
   be mixed up with an (unwanted) "non-white" background. This is a compromise
   because of technical reasons related to blending (the transparency
   effect). Because of blending, it would be impractical to use mid-grey
-  colors as the background color.
+  colors as the background color. It is also possible to disable the overlay
+  from the Settings.
 
 - An option in the Settings for a scaleless polar butterfly that is always
   on (similar to the one available while using the steer tool).
