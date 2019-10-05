@@ -7,3 +7,4 @@
 - Add finish_time into race (fleet) API
 - More accurate time call to enable better synchronization
 - Register call
+- Registration open or not info for races
