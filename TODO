@@ -4,6 +4,7 @@ UPSTREAM bugs?
 BUGS:
 - TWA predictor discrepancies, try adding 10sec heuristics, sync with server
 - Fleet layer & traces out-of-sync after multiple highlight pans
+- Safari (v10) missing .finally(), and draws black wind arrows/barbs but correctly colored predictor & polar bg curve colors
 
 JS check:
 - Object.assign use on arrays, use concat to empty array instead?
@@ -15,30 +16,30 @@ Check:
 - up/down keys in chat textarea don't work with something? In where? Chrome? FF worked when tested.
 
 Other bits
-- 2d24.0h in wx panel (due to rounding < 3d?)
+- Remove steering.vue onSetCourse (unused code)
 - Dblclick timer ok?
 - TWS contours
-- Enter key in DC popup doesn't do send
+- Enter key higher prio popup focus handling when DC editor field/button has focus
 - Select boats from map click in default ui mode, generalize hover find boats code
 - Refetch token
-- WX offset mode
 
 - click.prevent needed for touch UIs?
 - Handling touchstart & related events for zoom buttons, not just mousedown
-- Current steering in instruments (CSS text-decoration: underline;)
 - POI popup captures events (try as tooltips to have more control?)
 - Map graticules / grid
 	- FIX tiles edge drawn when the canvas is cropped from the tile graticule
 - Boatlists save to localStore & handle non-racing names cleanly
-- Chatroom config to localStore
 - Local trace correction (for recent turns)
 - Limit min (from viewsize or race area? Flash uses race area) zoom
 - Tweak MAX_LATITUDE of Leaflet's SphericalMercator projection (extend it)
 - Prune chat messages if needed
 - Blinking "!" triangle to chat & race messages when new messages
 - Fix splitpanes resized caused windmap movement
+- Edge transparency using CSS not supported (poi & tools)
+- Current steering in instruments (CSS text-decoration: underline;)
+- Tool images
+- Add Vue.config.errorHandler to catch remaining errors
 
-- Comma in decimal value input fields, needs parsing side upgrade
 - DC list time delta column
 - Highlight DCs with same time with red
 - Highlight DCs with out-of-range COG/TWAs
@@ -51,12 +52,13 @@ Other bits
 - Always-select toggle for leaderboard lists (now easy w the new getter)
 - Scroll position saving
 - Saving sort position for boat lists
+- Selected DC saved
 
 - Add generic poi/mark/boat targeter
 - Localstore, clear previous race message shown ids, before that validate races.xml?filter=active to have at least the current race id
 
 - 0.5px quirks to fleet & land
-- Error messages to tooltips (or by side) for incorrect steering inputs
+- Longer hover tooltips for all buttons & input fields.
 - Add expected courses list on clearing DCs & when doing steering
 	- If current course not on list, trigger reloading all DCs
 
@@ -86,9 +88,10 @@ Other bits
 - Notes?
 - 100 nearest boats shown?
 - Ability to compare prev & this wx (at least predictors)
-- Improve wx slider fg color transparency
 - Ruler: show opposite heading
 - Ruler wrap, detect anti-meridian crossing from mouse movements during panning
+- Notification (any incl chat) sound.
+- Popup zindex bring-to-top feature on titlebar click
 
 DC list other
 	- Better time sync support, figure out optimal delay fixup delta
@@ -122,6 +125,8 @@ Refactors
 	- Rework boat color creation, lots of useless object done there
 
 Visual low-prio stuff
+- Improve wx slider fg color transparency
+- Chat message max len tweak
 - WX slider dragging show the wxTime in a "tooltip" above the slider
 - Hide vs Show length in POI popup changes number of lines
 - poi close button href removal
@@ -177,14 +182,14 @@ Visual low-prio stuff
 - Textbox border everywhere (try global styling)
 - wx slider: tics/labels, start time tic
 - Fix initial race area center sets >180 lngs?
-- Placenames map?
+- Placenames map
 - Steering delay focus save
 - Timed race duplicate names filter
 - BBQ/TWA0 detection improvements (but only for non-buddies)
 - Chat high priority fetching support (for newly opened languages, active chats, recently sent chats)
 - Configrange, show current value, extreme numbers/"low"/"high"
 - Fix predictor or trace staleness (one tick horizontal line after pan)
-- Polar url in links?
+- Polar url in links? From auth?
 - "Reset" should consider not yet visible turns too (maybe block button until the next boat tick?)
 - "dark" eye strain mode, dark blue bg & darker lands & screen mix-blend-mode
 - Wind level line for command boat
@@ -193,6 +198,7 @@ Visual low-prio stuff
 	- Improve label display position, myabe use CSS to rotate the label?
 
 Configs
+	- Label boats with tooltips & config bl corner/both/off
 	- Route fading: old, old & far ahead, off (FI-SE archipelago helper)
 	- Steering digits: (2-4)
 	- Max distinct boats show on hover: range
@@ -201,7 +207,6 @@ Configs
 	- Route bisection lines bool (draw as dashed)?
 	- Instrument change dir/rate-of-change bools
 	- Highlight leader bool
-	- WX sound bool
 	- WX contours density: range
 	- Pop-up race messages: pop-up, tab auto-select, tab alert (blinking !)
 	- Direct steering retry timer (send)
