@@ -20,7 +20,9 @@ Steering
 - The steer tool input (mouse click) will auto-select COG steering mode
   into the steering tab to better match the UI aiming line. If you want
   instead to steer using TWA, please remember to activate TWA from the
-  steering tab before sending the steering command.
+  steering tab before sending the steering command. Alternatively,
+  you can adjust "Steering tool retains steering type" Setting to prevent
+  the steer tool from altering COG/TWA selection.
 
 - TWA and COG values in the steering panel remain in sync with with each
   other the whole time. The client updates the non-active steering
@@ -106,6 +108,11 @@ Weather
 
 - Weather step (for backward and forward buttons) can be changed
   independently of the selected time window for displaying weather data.
+
+- Weather panel can select to keep either the time or offset constant.
+  The current selection is bolded. Click the other field in the weather
+  panel to change between them. Settings allow selecting the default
+  behavior when the client is launched.
 
 Points of Interest (POIs)
 -------------------------
