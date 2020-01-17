@@ -5,6 +5,11 @@ BUGS:
 - TWA predictor discrepancies, try adding 10sec heuristics, sync with server
 - Fleet layer & traces out-of-sync after multiple highlight pans
 - Safari (v10) missing .finally(), and draws black wind arrows/barbs but correctly colored predictor & polar bg curve colors
+- iPad scroll (boatlist, chat OK)
+- iPad crosshair missing? (mullionman)
+- iPad "wind cursor" has graphical glitches (dikke)
+- iPad missing chat "send" button
+- boat list create not usable on some pad (dikke?)
 
 JS check:
 - Object.assign use on arrays, use concat to empty array instead?
@@ -16,29 +21,29 @@ Check:
 - up/down keys in chat textarea don't work with something? In where? Chrome? FF worked when tested.
 
 Other bits
-- Remove steering.vue onSetCourse (unused code)
-- Dblclick timer ok?
 - TWS contours
-- Enter key higher prio popup focus handling when DC editor field/button has focus
-- Select boats from map click in default ui mode, generalize hover find boats code
 - Refetch token
 
-- click.prevent needed for touch UIs?
-- Handling touchstart & related events for zoom buttons, not just mousedown
+- Polar touch "hover"
 - POI popup captures events (try as tooltips to have more control?)
 - Map graticules / grid
 	- FIX tiles edge drawn when the canvas is cropped from the tile graticule
-- Boatlists save to localStore & handle non-racing names cleanly
+- Boatlists editor, handle non-racing names cleanly
 - Local trace correction (for recent turns)
 - Limit min (from viewsize or race area? Flash uses race area) zoom
 - Tweak MAX_LATITUDE of Leaflet's SphericalMercator projection (extend it)
 - Prune chat messages if needed
 - Blinking "!" triangle to chat & race messages when new messages
 - Fix splitpanes resized caused windmap movement
-- Edge transparency using CSS not supported (poi & tools)
+- Edge: transparency using CSS not supported (poi & tools)
 - Current steering in instruments (CSS text-decoration: underline;)
 - Tool images
 - Add Vue.config.errorHandler to catch remaining errors
+- scrollable table x scrollbar when narrow enough: correct header positions
+
+- Enter key higher prio popup focus handling when DC editor field/button has focus
+- Select boats from map click in default ui mode, generalize hover find boats code
+- Chat odd/even bg jumps annoyingly when new message appear
 
 - DC list time delta column
 - Highlight DCs with same time with red
@@ -46,10 +51,11 @@ Other bits
 
 - Predictor performance loss impact
 - Predictor 10s at beginning
+- POI meteogram
 
 - Improve terminator & x3 it for twilights, #bbb only darkens colors a little
 - Lights mode, show-only & buddy boats always w/o lights
-- Always-select toggle for leaderboard lists (now easy w the new getter)
+- Always/auto-select toggle for leaderboard lists (now easy w the new getter)
 - Scroll position saving
 - Saving sort position for boat lists
 - Selected DC saved
@@ -58,7 +64,7 @@ Other bits
 - Localstore, clear previous race message shown ids, before that validate races.xml?filter=active to have at least the current race id
 
 - 0.5px quirks to fleet & land
-- Longer hover tooltips for all buttons & input fields.
+- Longer hover tooltips for all buttons & input fields & table headers.
 - Add expected courses list on clearing DCs & when doing steering
 	- If current course not on list, trigger reloading all DCs
 
@@ -85,6 +91,7 @@ Other bits
 - API call prepare code safety (make sure bugs don't stall API retry loop)
 - TWA given with "Port" / "P" / "Starboard" / "S" suffix
 - TWA ~ 0 causes the TWA predictor to look large blob at the boat or other issues with markers not on predictor line (at least with +0.01)
+- Dblclick timer ok?
 - Notes?
 - 100 nearest boats shown?
 - Ability to compare prev & this wx (at least predictors)
@@ -92,6 +99,7 @@ Other bits
 - Ruler wrap, detect anti-meridian crossing from mouse movements during panning
 - Notification (any incl chat) sound.
 - Popup zindex bring-to-top feature on titlebar click
+- Lat/lon instrument to obey settings format
 
 DC list other
 	- Better time sync support, figure out optimal delay fixup delta
@@ -157,7 +165,6 @@ Visual low-prio stuff
 - DC editor, past time handling / rejecting
 - Wind map, how to do calcs also during zooming, I read it's complicated but would look cool
 - Sail angle improvements
-- inline-block to wx panel, consider bolding the important fields
 - Consider drawing speedups:
 	- Use rbush for faster drawing when many small island polys in a tile?
 	- Avoid drawing complexity outside the screen (skip all points when in
@@ -206,7 +213,6 @@ Configs
 	- DTF: default, synthetized
 	- Route bisection lines bool (draw as dashed)?
 	- Instrument change dir/rate-of-change bools
-	- Highlight leader bool
 	- WX contours density: range
 	- Pop-up race messages: pop-up, tab auto-select, tab alert (blinking !)
 	- Direct steering retry timer (send)
