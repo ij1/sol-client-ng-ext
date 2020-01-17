@@ -43,7 +43,6 @@ Other bits
 
 - Enter key higher prio popup focus handling when DC editor field/button has focus
 - Select boats from map click in default ui mode, generalize hover find boats code
-- Chat odd/even bg jumps annoyingly when new message appear
 
 - DC list time delta column
 - Highlight DCs with same time with red
