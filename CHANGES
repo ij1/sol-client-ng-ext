@@ -114,6 +114,13 @@ Weather
   panel to change between them. Settings allow selecting the default
   behavior when the client is launched.
 
+- Wind speed contours are now always accurate. The slider in Settings
+  selects contours density, not accuracy like in the old client.
+
+- Quick-access buttons for textual TWS/TWD values beside each wind
+  arrow/barb can be enabled from Settings (they appear into bottom
+  right corner of the chart area).
+
 Points of Interest (POIs)
 -------------------------
 
