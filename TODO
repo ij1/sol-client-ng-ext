@@ -6,7 +6,6 @@ BUGS:
 - Fleet layer & traces out-of-sync after multiple highlight pans
 - Safari (v10) missing .finally(), and draws black wind arrows/barbs but correctly colored predictor & polar bg curve colors
 - iPad crosshair missing? (mullionman)
-- iPad "wind cursor" has graphical glitches (dikke)
 - iPad missing chat "send" button
 
 JS check:
