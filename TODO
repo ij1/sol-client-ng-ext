@@ -5,11 +5,9 @@ BUGS:
 - TWA predictor discrepancies, try adding 10sec heuristics, sync with server
 - Fleet layer & traces out-of-sync after multiple highlight pans
 - Safari (v10) missing .finally(), and draws black wind arrows/barbs but correctly colored predictor & polar bg curve colors
-- iPad scroll (boatlist, chat OK)
 - iPad crosshair missing? (mullionman)
 - iPad "wind cursor" has graphical glitches (dikke)
 - iPad missing chat "send" button
-- boat list create not usable on some pad (dikke?)
 
 JS check:
 - Object.assign use on arrays, use concat to empty array instead?
@@ -21,8 +19,9 @@ Check:
 - up/down keys in chat textarea don't work with something? In where? Chrome? FF worked when tested.
 
 Other bits
-- TWS contours
 - Refetch token
+- Race start time marker on the WX slider
+- Splitpanes save & restore & multi-orientation handling
 
 - Polar touch "hover"
 - POI popup captures events (try as tooltips to have more control?)
@@ -67,6 +66,9 @@ Other bits
 - Add expected courses list on clearing DCs & when doing steering
 	- If current course not on list, trigger reloading all DCs
 
+- Validate WX cells vs bounds
+- TWS contours gaps
+- Quick access for gc/loxo, leader, polar always, arrows/barbs
 - Reregister in timed races
 - Upgrade sol/guest -> own credentials
 - New boatlist based on active, not the main/all list
@@ -130,9 +132,11 @@ Refactors
 	- Refactor multiselect from boatlists
 	- Try projecting tiles beforehand, are the px values accurate?
 	- Rework boat color creation, lots of useless object done there
+	- wx increment -> cellSize
 
 Visual low-prio stuff
 - Improve wx slider fg color transparency
+- Wx slider focused color
 - Chat message max len tweak
 - WX slider dragging show the wxTime in a "tooltip" above the slider
 - Hide vs Show length in POI popup changes number of lines
@@ -145,7 +149,6 @@ Visual low-prio stuff
 - Towback start, refetch the fleet right away to avoid boats lingering on the sea
 - After finishing, fetch fleet until own distance there becomes zero (for quicker results)
 	- Sadly, no finish_time for boats in race API
-- Splitter css
 - Start time change notification: calculate delta part
 - allMessagesShown getter to racemessages.js (for tab highlight & alert)
 - Delay fleet fetch by some seconds to allow server to move all boats
