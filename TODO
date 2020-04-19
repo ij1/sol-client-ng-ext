@@ -20,20 +20,25 @@ Check:
 Other bits
 - Refetch token
 - Race start time marker on the WX slider
+- wx slider: tics/labels, start time tic
 - Splitpanes save & restore & multi-orientation handling
+- Quick help
+- Trace length limiter
+- Dual own trace removal when own boat is in fleettraces
+- Dark TODO: graticules, no blend at all for label bgs?
+- Send steering button feedback improvement
+- Chunks reading responses
+- Retry logic
+- 30kn+ polar lines if max changes > 4%
 
-- Polar touch "hover"
 - POI popup captures events (try as tooltips to have more control?)
 - Map graticules / grid
 	- FIX tiles edge drawn when the canvas is cropped from the tile graticule
 - Boatlists editor, handle non-racing names cleanly
-- Local trace correction (for recent turns)
 - Limit min (from viewsize or race area? Flash uses race area) zoom
 - Tweak MAX_LATITUDE of Leaflet's SphericalMercator projection (extend it)
 - Prune chat messages if needed
-- Blinking "!" triangle to chat & race messages when new messages
 - Fix splitpanes resized caused windmap movement
-- Edge: transparency using CSS not supported (poi & tools)
 - Current steering in instruments (CSS text-decoration: underline;)
 - Tool images
 - Add Vue.config.errorHandler to catch remaining errors
@@ -65,6 +70,7 @@ Other bits
 - Add expected courses list on clearing DCs & when doing steering
 	- If current course not on list, trigger reloading all DCs
 
+- Polar touch "hover"
 - Validate WX cells vs bounds
 - TWS contours gaps
 - Quick access for gc/loxo, leader, polar always, arrows/barbs
@@ -100,6 +106,8 @@ Other bits
 - Notification (any incl chat) sound.
 - Popup zindex bring-to-top feature on titlebar click
 - Lat/lon instrument to obey settings format
+- Local trace intersection finding (for recent turns)
+- WX comparator (old wx vs current)
 
 DC list other
 	- Better time sync support, figure out optimal delay fixup delta
@@ -131,7 +139,6 @@ Refactors
 	- Refactor multiselect from boatlists
 	- Try projecting tiles beforehand, are the px values accurate?
 	- Rework boat color creation, lots of useless object done there
-	- wx increment -> cellSize
 
 Visual low-prio stuff
 - Improve wx slider fg color transparency
@@ -140,10 +147,10 @@ Visual low-prio stuff
 - WX slider dragging show the wxTime in a "tooltip" above the slider
 - Hide vs Show length in POI popup changes number of lines
 - poi close button href removal
-- Trace length limiter (for return courses)
-- Boatlists by dtf distance, boat class
+- Boatlists by dtf distance, boat class (in multiclass races)
 - Boatlists, select still highlights boats filtered away
 - Try using tooltip for poi markers to make click functionality better
+- select order in drawing fleet
 - PR mark tooltip css to use zoom dependent padding?
 - Towback start, refetch the fleet right away to avoid boats lingering on the sea
 - After finishing, fetch fleet until own distance there becomes zero (for quicker results)
@@ -153,17 +160,15 @@ Visual low-prio stuff
 - Delay fleet fetch by some seconds to allow server to move all boats
 - Map tile zooming using css transformations
 - Chatroom visual separation
-- other boats contrast correction
 - 9999 ranking order?
+- Edge: transparency using CSS not supported (poi & tools)
 - Perhaps use mark nearness to refetch race more often?
 - Perhaps username component to offload charset tricks (if needed)?
 - Leaderboard tooltips (LOG, DBL, others?)
 - Leaderboard relative DTF mode
-- Fade old WPs & route
 - Investigate: are own boat's zoom issues due to updated position during zooming?
 - Two laps think how to make "Rounded" vs "Leave to ...", perhaps delta to current ordered z-indexing?
 - DC editor label click focus response for "Type" & "Date" labels
-- DC editor, past time handling / rejecting
 - Wind map, how to do calcs also during zooming, I read it's complicated but would look cool
 - Sail angle improvements
 - Consider drawing speedups:
@@ -184,11 +189,9 @@ Visual low-prio stuff
 - Vanishing fleet? At least with leaflet 1.4.0 (now using 1.3.4), canvases were correctly drawn!
 - Zoom animation, some CSS3 transformation examples in some canvas plugins
 - Perhaps use flyToBounds also for zooming if it gives more cb calls during zooming?
-- Hover: Command boat clone into searchTree (del+add cycle needs to be done)?
 - Make steering button width constant
 - Chat sizing to use flex / or dragable sizes?
 - Textbox border everywhere (try global styling)
-- wx slider: tics/labels, start time tic
 - Fix initial race area center sets >180 lngs?
 - Placenames map
 - Steering delay focus save
@@ -207,14 +210,12 @@ Visual low-prio stuff
 
 Configs
 	- Label boats with tooltips & config bl corner/both/off
-	- Route fading: old, old & far ahead, off (FI-SE archipelago helper)
 	- Steering digits: (2-4)
 	- Max distinct boats show on hover: range
 	- Background: dark blue sea, local day/night
 	- DTF: default, synthetized
 	- Route bisection lines bool (draw as dashed)?
 	- Instrument change dir/rate-of-change bools
-	- WX contours density: range
 	- Pop-up race messages: pop-up, tab auto-select, tab alert (blinking !)
 	- Direct steering retry timer (send)
 	- DC editor retry timer
