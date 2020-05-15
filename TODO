@@ -28,7 +28,6 @@ Other bits
 - Steering retry & correct time offsets inside the post call's caller
 - Move wx cell size into frame to allow multi sized
 	- Allow cell size switch, fake midpoint data by interpolating
-- Discard too old boat based on timestamp
 - New DC API code & testing
 
 - Dark TODO: graticules, no blend at all for label bgs?
