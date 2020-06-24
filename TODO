@@ -2,9 +2,9 @@ UPSTREAM bugs?
 - renderer for padding causes infinite recursion error in vue, possible related to conditional rendering
 
 BUGS:
-- TWA predictor discrepancies, try adding 10sec heuristics, sync with server
+- TWA predictor discrepancies, try adding 10sec heuristics, still a problem?
 - Fleet layer & traces out-of-sync after multiple highlight pans
-- Safari (v10) missing .finally(), and draws black wind arrows/barbs but correctly colored predictor & polar bg curve colors
+- Safari (v10) draws black wind arrows/barbs but correctly colored predictor & polar bg curve colors
 - iPad crosshair missing? (mullionman)
 - iPad missing chat "send" button
 
@@ -28,6 +28,15 @@ Other bits
 - WX tiles
 - New DC API code & testing
 - Boat keys & anti-meridian, zindex, behind the fleet boats? Wrapping too.
+- Diag polar bg drawing
+- Time check failing due to net? OK? There's no retry currently.
+- Standalone => unauthenticated before retrying, multiple tries & late failure
+	- Timestamp for parallel logins to skip earlier initialized
+- DC list possibly stale warning
+- Nav lights on boat, solve the scaling challenge, add option for hull+lights
+- Compare boat API timestamp bounds, warn if too large difference appears
+
+- Support stealth fleet mode (no position, cog, traces, dtf/dbl?)
 
 - Dark TODO: graticules, no blend at all for label bgs?
 - POI popup captures events (try as tooltips to have more control?)
@@ -50,11 +59,11 @@ Other bits
 - POI meteogram
 
 - Improve terminator & x3 it for twilights, #bbb only darkens colors a little
-- Lights mode, show-only & buddy boats always w/o lights
 - Always/auto-select toggle for leaderboard lists (now easy w the new getter)
 - Scroll position saving & chat room change scroll
 - Saving sort position for boat lists
 - Selected DC saved
+- Secondary sort column in boatlists
 
 - Add generic poi/mark/boat targeter
 - Localstore, clear previous race message shown ids, before that validate races.xml?filter=active to have at least the current race id
@@ -72,9 +81,9 @@ Other bits
 - Upgrade sol/guest -> own credentials
 - Larger draw outside renderer value, maybe make it configurable if perf impact
 - Improve error reporting when invalid data arrives, the rest
-- Network debug into diag
+- Network debug: click error number for errors popup
 - boatlist lastclicked to store to avoid forgetting it?
-- SOL API Time sync support
+- SOL API Time sync after start
 - Pruning loaded tiles to free memory, add zero refCounted lists, do this only if needed.
 - Predictors, consider performance improvements (smaller parts, bboxes, multi canvases)
 - Put not moved into fleet and use as TWA=0 heuristic (towback needs to be taken into account)
@@ -135,6 +144,7 @@ Refactors
 	- Rework boat color creation, lots of useless object done there
 	- name -> id map for msg during parse if available
 	- ResizeObserver available in very late versions of all browsers!
+	- wrappedLatLng -> raceLatLng
 
 Visual low-prio stuff
 - SYC flag preload to avoid header misposition (or use a timer)
