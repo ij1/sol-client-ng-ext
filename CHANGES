@@ -66,6 +66,13 @@ Steering
 - The predictor now includes 1 minute dots for the first 15 minutes when
   zoomed close enough.
 
+- Polar background curves mode can be changed from pull down menu in topright
+  corner of the polar. By default, curves up to 50kn are shown (>30kn curves
+  only if they add information). A low TWS polar mode shows 1-6kn curves.
+  In addition, 1-30kn mode allows removing high TWS clutter that is rarely
+  needed and matches to the behavior previously used (both this and flash
+  clients).
+
 Ruler Tool
 ----------
 
@@ -108,6 +115,7 @@ Weather
 
 - Weather step (for backward and forward buttons) can be changed
   independently of the selected time window for displaying weather data.
+  Initial step can be selected from Settings.
 
 - Weather panel can select to keep either the time or offset constant.
   The current selection is bolded. Click the other field in the weather
@@ -120,6 +128,12 @@ Weather
 - Quick-access buttons for textual TWS/TWD values beside each wind
   arrow/barb can be enabled from Settings (they appear into bottom
   right corner of the chart area).
+
+- Tics on the panel indicate weather update times (red), UTC hours (black),
+  and start time (wide green band).
+
+- Weather system details (grid, update times) can be read under "Race
+  Information" in misc tab.
 
 Points of Interest (POIs)
 -------------------------
@@ -141,7 +155,7 @@ Other
 -----
 
 - Instrument visibility is controlled through the Settings (under the
-  Misc tab).
+  Misc tab). LAT, LON, VMC, and DATE instruments can be enabled/disabled.
 
 - There is an attempt to scale the practice mark size to match the size
   in the flash client, however, the size and also max zoom may still be
@@ -158,6 +172,26 @@ Other
   In addition to horizontal and vertical lines, local wind-based aid lines
   can be selected.
 
+- Chat alert (on chat tab) indicates unread messages have appeared.
+
+- To help report making, boat keys can be placed to bottom-left corner,
+  on map, or both. Visual glitches are known to appear during zooming
+  when the boat keys appear on map. The limit on the number of boat keys
+  that are shown still applies (this limitation may or may not be lifted
+  in future).
+
+- Clicking a boat name on boat key in bottom-left corner highlights the boat.
+
+- Clicking a boat name on chat highlights the boat.
+
+- The race GPX file is available for download under "Race Information" on
+  Misc tab.
+
+- The tileset used by the race (high or intermediate) is shown under
+  "Race Information" on Misc tab.
+
+- Boat lists based on country are possible.
+
 Visual Impact Only
 ------------------
 
@@ -168,6 +202,13 @@ Visual Impact Only
   effect). Because of blending, it would be impractical to use mid-grey
   colors as the background color. It is also possible to disable the overlay
   from the Settings.
+
+- Settings allow selecting how boat icon is shown during night (nav lights
+  or hull always shown).
+
+- Command boat and predictor color can be changed using Settings.
+
+- Boat colors are corrected to improve contrast.
 
 - An option in the Settings for a scaleless polar butterfly that is always
   on (similar to the one available while using the steer tool).
@@ -186,3 +227,40 @@ Visual Impact Only
   are now visually labelled on the map. The additional criteria for the label
   to be added, is that the mark is at least 0.1nm away from the starting
   position to avoid overlapping labels at the start.
+
+- Distant legs of the race course can be de-emphasized (faded out) using
+  Settings.
+
+- Polar curves are sorted based on the closeness to the current TWS. This
+  changes slightly the polar appearance.
+
+- Fleet boat visibility default to always off. It can be altered from
+  Settings.
+
+- Active steering mode is highlighted on the COG/TWA instrument.
+
+
+Technical
+---------
+
+- The client is able to degrade into chatless mode to keep core
+  functionality operation if chat messages are proven to prevent updating
+  boat position for some reason. In chatless mode, no new chat messages
+  can be received. No warning will be given about this contingency mode
+  except through diagnostic tab. The client attempts to restore the normal
+  chat functionality automatically. Some boat updates may be missed due to
+  chat-working probing.
+
+- The client performs client-side abort. Initially, 15 seconds timeout for
+  receiving next data fragment from the server is used with backoffs to up
+  to 120 seconds. This may cause some spurious timeouts under challenging
+  network conditions slowing down loading of the client but the client will
+  discover the correct timeout over time.
+
+- The client attempts to correct time offset between the client machine and
+  SOL server. If something makes large adjustment to the local clock of the
+  machine after the client has started, the correction may become incorrect.
+  In this condition the clock instrument will show incorrect time and next
+  DC timer will be incorrect. A client reload is currently recommended to
+  resolve (for now, later complex clock resynchronization procedure may be
+  added to the client itself).
