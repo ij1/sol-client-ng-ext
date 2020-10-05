@@ -15,8 +15,11 @@ Check:
 - up/down keys in chat textarea don't work with something? FF doesn't always work.
 
 Other bits
+- Miniscule wx cell TWS contours speed ups (draw only on edges)
+- TWA does not update (or reset) correctly when moving back to steer tab until next boat tick
+	- Or when turning, no need for other tab, reactivity fail?
+- Save leaderboard sort column
 - Splitpanes save & restore & multi-orientation handling
-- Quick help
 - Trace length limiter
 - Dual own trace removal when own boat is in fleettraces
 - Send steering button feedback improvement
@@ -27,14 +30,11 @@ Other bits
 	- Allow cell size switch, fake midpoint data by interpolating
 - WX tiles
 - New DC API code & testing
-- Boat keys & anti-meridian, zindex, behind the fleet boats? Wrapping too.
-- Diag polar bg drawing
-- Time check failing due to net? OK? There's no retry currently.
+- Boat keys zindex, behind the fleet boats?
 - Standalone => unauthenticated before retrying, multiple tries & late failure
 	- Timestamp for parallel logins to skip earlier initialized
 - DC list possibly stale warning
 - Nav lights on boat, solve the scaling challenge, add option for hull+lights
-- Compare boat API timestamp bounds, warn if too large difference appears
 
 - Support stealth fleet mode (no position, cog, traces, dtf/dbl?)
 
@@ -61,9 +61,7 @@ Other bits
 - Improve terminator & x3 it for twilights, #bbb only darkens colors a little
 - Always/auto-select toggle for leaderboard lists (now easy w the new getter)
 - Scroll position saving & chat room change scroll
-- Saving sort position for boat lists
 - Selected DC saved
-- Secondary sort column in boatlists
 
 - Add generic poi/mark/boat targeter
 - Localstore, clear previous race message shown ids, before that validate races.xml?filter=active to have at least the current race id
@@ -107,12 +105,23 @@ Other bits
 - Ruler wrap, detect anti-meridian crossing from mouse movements during panning
 - Notification (any incl chat) sound.
 - Popup zindex bring-to-top feature on titlebar click
-- Lat/lon instrument to obey settings format
 - Local trace intersection finding (for recent turns)
 - WX comparator (old wx vs current)
 - Race planner (tile set changer, wp naming, wp moving)
 - Trace wrap handler for >360 degree races
 - Popup drag with hover
+- No chatrooms in auth_raceinfo leads to crash, only one room leads to crash
+- Still too frequent map tile retries
+- Distance-in-lead
+- Refetching race messages?
+- Could skip fetching wx with - in the name
+- Predictor refactor
+	- Predictor -> store refactor, could help performance if predictor goes to normal layer
+	- Predictor to normal Leaflet polyline. Is there enough accuracy? Leaflet allows configuring pruning for polylines
+	- Link predictor markers on hover
+	- Predictor: Active steering order over the other
+	- Aiming from predictor?
+	- Planning only predictor?
 
 DC list other
 	- Better time sync support, figure out optimal delay fixup delta
@@ -129,8 +138,6 @@ Refactors
 	- kntToMs / msToKnt improvement, conv.js + constants for all conversions
 	- consider transforming API data @ fetch time to avoid most of knt/ms conversions
 	- Map events using vue2leaflet style, any to do? 2 in map.vue?
-	- Predictor -> store refactor, could help performance if predictor goes to normal layer
-	- Predictor to normal Leaflet polyline. Is there enough accuracy?
 	- veevalidate consider, looked too complicated but might be good
 	- generic timedelta -> string converter (as component?)
 	- config label component for ("experimental" or such easy add ones)
@@ -148,9 +155,11 @@ Refactors
 
 Visual low-prio stuff
 - SYC flag preload to avoid header misposition (or use a timer)
+- Add phantom container into hover coordinate to avoid constant bg resizing
 - WX contour labels
 - Improve wx slider fg color transparency
 - Chat message max len tweak
+- 2deg steer aim region?
 - WX slider dragging show the wxTime in a "tooltip" above the slider
 - Tool images
 - Hide vs Show length in POI popup changes number of lines
@@ -181,7 +190,6 @@ Visual low-prio stuff
 	- Use rbush for faster drawing when many small island polys in a tile?
 	- Avoid drawing complexity outside the screen (skip all points when in
 	  the same side of a border)
-- Predictor: Active steering order over the other
 - Graticules lat/lon numbers
 - Prevent selection of constant texts/labels
 - Draw leader on top to canvas (trace z-index too for own+leader?)
@@ -235,6 +243,7 @@ Warnings (to lower right corner?):
 	- Warn from invalid WX
 	- Clock offsets
 	- Boat degraded mode (buggy chat)
+	- Setting start DC but already one existing? Clear other commands?
 
 Discussion needed:
 - Custom target WPs for VMC & WPBRG calculations
@@ -250,8 +259,6 @@ Discussion needed:
 - PR mark cut detector?
 - Predictor
 	- Next DC visualization
-	- Aiming from predictor?
-	- Planning only predictor?
 - Good projection for polar region?
 
 UPSTREAM bugs, all worked around currently:
