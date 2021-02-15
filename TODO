@@ -15,9 +15,11 @@ Check:
 - up/down keys in chat textarea don't work with something? FF doesn't always work.
 
 Other bits
+- Select/hover highlight for DCs
+- Long predictors spam diag logs with NAM (& other short wx)
+- Reactivity fails for latLng (null -> non-null fails), at least delayLatLng
+- Spellcheck disable for boatlists
 - Miniscule wx cell TWS contours speed ups (draw only on edges)
-- TWA does not update (or reset) correctly when moving back to steer tab until next boat tick
-	- Or when turning, no need for other tab, reactivity fail?
 - Save leaderboard sort column
 - Splitpanes save & restore & multi-orientation handling
 - Trace length limiter
@@ -145,7 +147,6 @@ Refactors
 	- freq used functions, check if returning objects necessary (e.g., twd/tws calcs?)
 	- Tiles try remove waitList clearing
 	- Check if splitting in wx code needs also some idle calls, could take long?
-	- LControl click propagation with newer Vue2Leaflet
 	- Refactor multiselect from boatlists
 	- Try projecting tiles beforehand, are the px values accurate?
 	- Rework boat color creation, lots of useless object done there
@@ -246,7 +247,6 @@ Warnings (to lower right corner?):
 	- Setting start DC but already one existing? Clear other commands?
 
 Discussion needed:
-- Custom target WPs for VMC & WPBRG calculations
 - WPBRG with red/green/grey dot/arrow/pointer to polar
 - Setting DCs, time calc: from the last boat tick or SOL realtime?
 - Configs:
@@ -257,8 +257,6 @@ Discussion needed:
 - Advanced config filtering out some of the config options (also think "SOTP" filter same time)
 - Dual steering UI, one for manual, other for DC?
 - PR mark cut detector?
-- Predictor
-	- Next DC visualization
 - Good projection for polar region?
 
 UPSTREAM bugs, all worked around currently:
