@@ -19,7 +19,6 @@ Other bits
 - non-existing chat channel in config (if made invisible) works?
 - Select/hover highlight for DCs
 - Reactivity fails for latLng (null -> non-null fails), at least delayLatLng
-- Spellcheck disable for boatlists
 - Miniscule wx cell TWS contours speed ups (draw only on edges)
 - Save leaderboard sort column
 - Splitpanes save & restore & multi-orientation handling
