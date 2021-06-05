@@ -15,12 +15,9 @@ Check:
 - up/down keys in chat textarea don't work with something? FF doesn't always work.
 
 Other bits
-- non-existing channel in config (if made invisible) works?
-- handle finish_time missing from xml
-- Isochrone color configurable
-- Pick from map UI mode + tools button to use it
+- init transient can have boat id != null but no instruments (break at least predictor?)
+- non-existing chat channel in config (if made invisible) works?
 - Select/hover highlight for DCs
-- Long predictors spam diag logs with NAM (& other short wx)
 - Reactivity fails for latLng (null -> non-null fails), at least delayLatLng
 - Spellcheck disable for boatlists
 - Miniscule wx cell TWS contours speed ups (draw only on edges)
@@ -35,7 +32,6 @@ Other bits
 - Steering retry & correct time offsets inside the post call's caller
 - Move wx cell size into frame to allow multi sized
 	- Allow cell size switch, fake midpoint data by interpolating
-- Toggle button for rule lines & texts, rev delete rules
 - WX tiles
 - New DC API code & testing
 - Boat keys zindex, behind the fleet boats?
@@ -127,9 +123,9 @@ Other bits
 	- Predictor -> store refactor, could help performance if predictor goes to normal layer
 	- Predictor to normal Leaflet polyline. Is there enough accuracy? Leaflet allows configuring pruning for polylines
 	- Link predictor markers on hover
-	- Predictor: Active steering order over the other
 	- Aiming from predictor?
 	- Planning only predictor?
+	- Old wx predictor stored
 
 DC list other
 	- Better time sync support, figure out optimal delay fixup delta
@@ -153,7 +149,6 @@ Refactors
 	- freq used functions, check if returning objects necessary (e.g., twd/tws calcs?)
 	- Tiles try remove waitList clearing
 	- Check if splitting in wx code needs also some idle calls, could take long?
-	- LControl click propagation with newer Vue2Leaflet
 	- Refactor multiselect from boatlists
 	- Try projecting tiles beforehand, are the px values accurate?
 	- Rework boat color creation, lots of useless object done there
@@ -199,14 +194,12 @@ Visual low-prio stuff
 	- Avoid drawing complexity outside the screen (skip all points when in
 	  the same side of a border)
 - Graticules lat/lon numbers
-- Prevent selection of constant texts/labels
 - Draw leader on top to canvas (trace z-index too for own+leader?)
 - Sort tile fetch list based on closeness to the center (needs map center tile information), add refCount === 0 into front to kill them as soon as possible
 - race message datetime layouting, current title rows have an impact
 - When anti-meridian is visible, instead of tile reuse, create shadow copies to -360/+360 to avoid tile flicker on pan over 180
 - Brainaid style DC list, include button for abort everything related to DCs
 - Only remove points from trace with dst > last trace point (how to handle tight turns then?)
-- Vanishing fleet? At least with leaflet 1.4.0 (now using 1.3.4), canvases were correctly drawn!
 - Perhaps use flyToBounds also for zooming if it gives more cb calls during zooming?
 - Make steering button width constant
 - Chat sizing to use flex / or dragable sizes?
@@ -265,8 +258,6 @@ Discussion needed:
 - Advanced config filtering out some of the config options (also think "SOTP" filter same time)
 - Dual steering UI, one for manual, other for DC?
 - PR mark cut detector?
-- Predictor
-	- Next DC visualization
 - Good projection for polar region?
 
 UPSTREAM bugs, all worked around currently:
