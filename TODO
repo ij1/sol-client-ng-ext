@@ -9,14 +9,37 @@ BUGS:
 - iPad missing chat "send" button
 
 Check:
-- Finish line end point fixes?
 - Verify that there are no useless tile redraws (print redraw count to tile).
 - Chrome dc dot w/o cc/twa values
 - up/down keys in chat textarea don't work with something? FF doesn't always work.
 
 Other bits
+- Don't auto-delete DCs when server is broken (to allow deleting old DCs).
+- limit contours drawing to existing tile ranges
+	- This is hard than I initially thought. Maybe keep track of lon array 1+ tiles state?
+- check all store diag calls to have root: true argument
+- refactor solapi stats init so that stat setup can be called independently (tiled wx fetch loop should report errors through there)
+- multiple "start" DCs and/or other DCs during towback
+- towback aware predictor
+- status line, for unranked, say so "Boat guest (no rank) with ...
+- dc checkbox auto
+- polar vmg markers (on map ones in particular)
+- "reset" button quick help
+- contours func to use tile indexes properly
+- refactor wx fetching code
+- cleanup wx layers when wx meta is fetched
+- linkify chat & in-race messages?
+- center on DC button?
+- DC marker wrap copies
+- don't use dcFetchTime but figure out if DCs were really changed
+- gybe to +180 shows "tack" button
+- wx update markers on predictor
+- dc markers only major w/ low-zoom (setTimeout local data var to reduce load on update)
 - init transient can have boat id != null but no instruments (break at least predictor?)
+- race between dc auto-reload and expiring command (visual & also commit race)
+- delete first in ruler does not update total distance, should it?
 - non-existing chat channel in config (if made invisible) works?
+- polar butterfly at wx dot
 - Select/hover highlight for DCs
 - Reactivity fails for latLng (null -> non-null fails), at least delayLatLng
 - Miniscule wx cell TWS contours speed ups (draw only on edges)
@@ -38,6 +61,7 @@ Other bits
 	- Timestamp for parallel logins to skip earlier initialized
 - DC list possibly stale warning
 - Nav lights on boat, solve the scaling challenge, add option for hull+lights
+- Add icon for tools custom from pos
 
 - Support stealth fleet mode (no position, cog, traces, dtf/dbl?)
 
@@ -60,6 +84,7 @@ Other bits
 
 - Predictor 10s at beginning
 - POI meteogram
+- POI small circles, to boat, to x nm
 
 - Improve terminator & x3 it for twilights, #bbb only darkens colors a little
 - Always/auto-select toggle for leaderboard lists (now easy w the new getter)
@@ -119,9 +144,8 @@ Other bits
 - Refetching race messages?
 - Could skip fetching wx with - in the name
 - Predictor refactor
-	- Predictor -> store refactor, could help performance if predictor goes to normal layer
 	- Predictor to normal Leaflet polyline. Is there enough accuracy? Leaflet allows configuring pruning for polylines
-	- Link predictor markers on hover
+	- Link predictor markers on hover to DC tab
 	- Aiming from predictor?
 	- Planning only predictor?
 	- Old wx predictor stored
