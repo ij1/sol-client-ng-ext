@@ -61,7 +61,7 @@ Other bits
 	- Timestamp for parallel logins to skip earlier initialized
 - DC list possibly stale warning
 - Nav lights on boat, solve the scaling challenge, add option for hull+lights
-- Add icon for tools custom from pos
+- Add icon for tools custom from pos, or red GC arc
 - Dim GC/Rh from tools when bearing is written manually.
 
 - Support stealth fleet mode (no position, cog, traces, dtf/dbl?)
