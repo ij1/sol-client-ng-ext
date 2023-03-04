@@ -62,6 +62,7 @@ Other bits
 - DC list possibly stale warning
 - Nav lights on boat, solve the scaling challenge, add option for hull+lights
 - Add icon for tools custom from pos
+- Dim GC/Rh from tools when bearing is written manually.
 
 - Support stealth fleet mode (no position, cog, traces, dtf/dbl?)
 
