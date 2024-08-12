@@ -14,6 +14,8 @@ Check:
 - up/down keys in chat textarea don't work with something? FF doesn't always work.
 
 Other bits
+- Tools buttons don't work well with wheel.png
+- validate delay better in mutation to prevent errors spreading
 - Don't auto-delete DCs when server is broken (to allow deleting old DCs).
 - limit contours drawing to existing tile ranges
 	- This is hard than I initially thought. Maybe keep track of lon array 1+ tiles state?
@@ -63,6 +65,7 @@ Other bits
 - Nav lights on boat, solve the scaling challenge, add option for hull+lights
 - Add icon for tools custom from pos, or red GC arc
 - Dim GC/Rh from tools when bearing is written manually.
+- separate tools bearing input from bearing used for calculations (refactor)
 
 - Support stealth fleet mode (no position, cog, traces, dtf/dbl?)
 
