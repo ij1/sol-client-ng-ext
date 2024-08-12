@@ -42,7 +42,6 @@ Other bits
 - delete first in ruler does not update total distance, should it?
 - non-existing chat channel in config (if made invisible) works?
 - polar butterfly at wx dot
-- Select/hover highlight for DCs
 - Reactivity fails for latLng (null -> non-null fails), at least delayLatLng
 - Miniscule wx cell TWS contours speed ups (draw only on edges)
 - Save leaderboard sort column
@@ -51,7 +50,6 @@ Other bits
 - POI notes field
 - Dual own trace removal when own boat is in fleettraces
 - Send steering button feedback improvement
-- Wind arrows/barbs none should remove also contours
 - Change tab while dc update in progress closes the editor?? Does it?
 - Steering retry & correct time offsets inside the post call's caller
 - Move wx cell size into frame to allow multi sized
