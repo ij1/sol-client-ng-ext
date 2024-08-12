@@ -23,7 +23,6 @@ Other bits
 - refactor solapi stats init so that stat setup can be called independently (tiled wx fetch loop should report errors through there)
 - multiple "start" DCs and/or other DCs during towback
 - towback aware predictor
-- status line, for unranked, say so "Boat guest (no rank) with ...
 - dc checkbox auto
 - polar vmg markers (on map ones in particular)
 - "reset" button quick help
